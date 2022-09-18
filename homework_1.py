@@ -1,7 +1,6 @@
-import requests
-
 def parse(query: str) -> dict:
-    return {}
+    parse_dict = {}
+    return parse_dict
 
 
 if __name__ == '__main__':
@@ -10,10 +9,12 @@ if __name__ == '__main__':
     assert parse('http://example.com/') == {}
     assert parse('http://example.com/?') == {}
     assert parse('http://example.com/?name=Dima') == {'name': 'Dima'}
-    url = 'https://example.com/path/to/page?name=ferret&color=purple'
+
 
 def parse_cookie(query: str) -> dict:
-    return {}
+    parse_cookie_dict = {}
+
+    return parse_cookie_dict
 
 
 if __name__ == '__main__':
