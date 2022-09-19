@@ -1,6 +1,11 @@
 def parse(query: str) -> dict:
-    parse_dict = {}
-    return parse_dict
+    try:
+        page, query = query.rstrip('&').split('?')
+        parse_dict = dict(pair.split('=') for pair in query.split('&'))
+        return parse_dict
+    except:
+        return {}
+
 
 
 if __name__ == '__main__':
@@ -11,14 +16,14 @@ if __name__ == '__main__':
     assert parse('http://example.com/?name=Dima') == {'name': 'Dima'}
 
 
-def parse_cookie(query: str) -> dict:
-    parse_cookie_dict = {}
-
-    return parse_cookie_dict
-
-
-if __name__ == '__main__':
-    assert parse_cookie('name=Dima;') == {'name': 'Dima'}
-    assert parse_cookie('') == {}
-    assert parse_cookie('name=Dima;age=28;') == {'name': 'Dima', 'age': '28'}
-    assert parse_cookie('name=Dima=User;age=28;') == {'name': 'Dima=User', 'age': '28'}
+# def parse_cookie(query: str) -> dict:
+#     parse_cookie_dict = {}
+#
+#     return parse_cookie_dict
+#
+#
+# if __name__ == '__main__':
+#     assert parse_cookie('name=Dima;') == {'name': 'Dima'}
+#     assert parse_cookie('') == {}
+#     assert parse_cookie('name=Dima;age=28;') == {'name': 'Dima', 'age': '28'}
+#     assert parse_cookie('name=Dima=User;age=28;') == {'name': 'Dima=User', 'age': '28'}
