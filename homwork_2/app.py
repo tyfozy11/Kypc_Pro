@@ -13,8 +13,8 @@ def index():
 
 @app.route('/requirements', methods=['get'])
 def requirements():
-     while open('requirements.txt', 'r') as requirements:
-        return requirements
+     while open('requirements.txt', 'r') as file:
+        return file
 
 
 @app.route('/generate-users', methods=['get', 'post'])
@@ -24,6 +24,9 @@ def user_generator():
     if request.method == 'POST':
         users = ""
         number_of_users = int(request.form['number_of_users'])
+        if not int(request.form['number_of_users']):
+            number_of_users = 100
+
         for fake in range(number_of_users):
             users += f'\n\n{name.first_name()} - {name.email()}\n'
             generation_result['users'] = users
