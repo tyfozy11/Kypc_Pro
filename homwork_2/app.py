@@ -13,9 +13,11 @@ def index():
 
 @app.route('/requirements', methods=['get'])
 def requirements():
-     while open('requirements.txt', 'r') as file:
-        return file
-
+    try:
+        requirements = open('requirements.txt', 'r')
+        return requirements
+    finally:
+        requirements.close()
 
 @app.route('/generate-users', methods=['get', 'post'])
 def user_generator():
