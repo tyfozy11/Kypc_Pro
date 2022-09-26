@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request
 from faker import Faker
 import requests
@@ -14,8 +13,8 @@ def index():
 
 @app.route('/requirements', methods=['get'])
 def requirements():
-    requirements = open('requirements.txt', 'r')
-    return requirements
+     while open('requirements.txt', 'r') as requirements:
+        return requirements
 
 
 @app.route('/generate-users', methods=['get', 'post'])
@@ -35,7 +34,8 @@ def user_generator():
 def astro():
     url = ('http://api.open-notify.org/astros.json')
     information_about_astronauts = requests.get(url)
-    return f"Number of astronauts at the moment is {str(information_about_astronauts.json()['number'])} people"
+    if information_about_astronauts.status_code == 200:
+        return f"Number of astronauts at the moment is {str(information_about_astronauts.json()['number'])} people"
 
 
 if __name__ == '__main__':
