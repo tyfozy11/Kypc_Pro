@@ -19,16 +19,17 @@ def requirements():
     finally:
         requirements.close()
 
+
 @app.route('/generate-users', methods=['get', 'post'])
 def user_generator():
     generation_result = {}
 
     if request.method == 'POST':
         users = ""
-        number_of_users = int(request.form['number_of_users'])
-        if not int(request.form['number_of_users']):
+        if not request.form['number_of_users']:
             number_of_users = 100
-
+        else:
+            number_of_users = int(request.form['number_of_users'])
         for fake in range(number_of_users):
             users += f'\n\n{name.first_name()} - {name.email()}\n'
             generation_result['users'] = users
