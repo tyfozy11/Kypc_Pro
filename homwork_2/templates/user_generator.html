@@ -1,0 +1,12 @@
+<html>
+    <head></head>
+    <body>
+        <form method="post">
+            <input type="number" name="number_of_users">
+            <button type="submit"> Start Generate!</button>
+                {% if users %}
+                <h1> Generation done:<br> {{ users }}</h1>
+                {% endif%}
+        </form>
+    </body>
+</html>

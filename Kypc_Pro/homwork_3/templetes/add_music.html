@@ -1,0 +1,39 @@
+<html>
+ <head></head>
+    <body>
+    <form method="post">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <input type="text" name="name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lasting</td>
+                    <td>
+                        <input type="number" name="lasting">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Executor</td>
+                    <td>
+                        <select name="executor">
+                            <option> ---- </option>
+                            {% for Executor in Executors %}
+                                <option value="{{ executor.id }}">{{ executor.name }} {% if executor.genre %} ({{ executor.genre }}) {% endif %}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Add</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+
+    </body>
+</html>
