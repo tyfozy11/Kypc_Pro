@@ -1,0 +1,18 @@
+<html>
+ <head></head>
+    <body>
+    <form method="post">
+            <td> Song </td>
+                    <td>
+                        <select name="songs">
+                            <option>----</option>
+                            {% for song in songs%}
+                            <option value="{{song.id }}"> {{ song.name }} </option>
+                        </select>
+                    </td>
+        <td>
+            <button type="submit">Delete</button>
+        </td>
+        </form>
+    </body>
+</html>
